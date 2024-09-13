@@ -64,12 +64,16 @@ const Farm = mongoose.model('Farm', farmSchema);
 
 // makeFarm();
 
-const addProduct = async (id) => {
-    const farm = await Farm.findById(id)
-    const Pumpkin = await Product.findOne({name: 'Pumpkin'})
-    farm.products.push(Pumpkin)
-    await farm.save();
-    console.log(farm)
-}
+// const addProduct = async (id) => {
+//     const farm = await Farm.findById(id)
+//     const Pumpkin = await Product.findOne({name: 'Pumpkin'})
+//     farm.products.push(Pumpkin)
+//     await farm.save();
+//     console.log(farm)
+// }
 
-addProduct('66e3e18d2a0301443d438621')
+// addProduct('66e3e18d2a0301443d438621')
+
+Farm.findOne({ name: 'Farm'}).populate('products').then((farm) => {
+    console.log(farm);
+})
